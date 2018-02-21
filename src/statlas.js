@@ -25,6 +25,17 @@ var statlasState = {
         this.menu_bg.tint = convertColor(COLOR['MENU_NONACTIVE_BG'])
         //this.menu_bg.anchor.x = 1.0
 
+        // BUTTONS ENERGY
+        this.btn_energy_electricityproduction = this.createMenuButton('btn_energy_electricityproduction', RES_X + 28+200, BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION'])
+        this.btn_energy_accesstoelectricity = this.createMenuButton('btn_energy_accesstoelectricity', RES_X + 28, BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY'])
+        this.btn_energy_oil = this.createMenuButton('btn_energy_oil', RES_X + 28, BTN_MENU_ENERGY_Y['OIL'])
+        this.btn_energy_coal = this.createMenuButton('btn_energy_coal', RES_X + 28, BTN_MENU_ENERGY_Y['COAL'])
+        this.btn_energy_naturalgas = this.createMenuButton('btn_energy_naturalgas', RES_X + 28, BTN_MENU_ENERGY_Y['NATURALGAS'])
+        this.btn_energy_renewablesources = this.createMenuButton('btn_energy_renewablesources', RES_X + 28, BTN_MENU_ENERGY_Y['RENEWABLESOURCES'])
+        this.btn_energy_hydropower = this.createMenuButton('btn_energy_hydropower', RES_X + 28, BTN_MENU_ENERGY_Y['HYDROPOWER'])
+        this.btn_energy_nuclearpower = this.createMenuButton('btn_energy_nuclearpower', RES_X + 28, BTN_MENU_ENERGY_Y['NUCLEARPOWER'])
+
+
         // MENU OUTER BG
         this.menu_outer_bg = game.add.sprite(RES_X + 159, 0, 'menu_outer_bg');
         this.menu_outer_bg.anchor.x = 1.0
@@ -38,15 +49,6 @@ var statlasState = {
         this.menu_constant.tint = convertColor(COLOR['MENU_ACTIVE'])
         game.add.tween(this.menu_constant).to({x: RES_X - 54}, 1, Phaser.Easing.Quintic.Out, true); // ??? 1
 
-        // BUTTONS ENERGY
-        this.btn_energy_electricityproduction = this.createMenuButton('btn_energy_electricityproduction', BTN_MENU_ENERGY_X+200, BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION'])
-        this.btn_energy_accesstoelectricity = this.createMenuButton('btn_energy_accesstoelectricity', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY'])
-        this.btn_energy_oil = this.createMenuButton('btn_energy_oil', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['OIL'])
-        this.btn_energy_coal = this.createMenuButton('btn_energy_coal', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['COAL'])
-        this.btn_energy_naturalgas = this.createMenuButton('btn_energy_naturalgas', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['NATURALGAS'])
-        this.btn_energy_renewablesources = this.createMenuButton('btn_energy_renewablesources', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['RENEWABLESOURCES'])
-        this.btn_energy_hydropower = this.createMenuButton('btn_energy_hydropower', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['HYDROPOWER'])
-        this.btn_energy_nuclearpower = this.createMenuButton('btn_energy_nuclearpower', BTN_MENU_ENERGY_X, BTN_MENU_ENERGY_Y['NUCLEARPOWER'])
 
 
 
@@ -395,8 +397,15 @@ var statlasState = {
         game.add.tween(this.btn_military.scale).to({ x: 0.35, y: 0.35}, 400, Phaser.Easing.Quadratic.Out, true)
 
         // SHIT123
-        game.add.tween(this.btn_energy_electricityproduction).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION']}, 400, Phaser.Easing.Quadratic.Out, true);
         //game.add.tween(this.btn_energy_electricityproduction.scale).to({ x: 0.35, y: 0.35}, 400, Phaser.Easing.Quadratic.Out, true)
+        game.add.tween(this.btn_energy_electricityproduction).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_accesstoelectricity).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_oil).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['OIL']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_coal).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['COAL']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_naturalgas).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['NATURALGAS']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_renewablesources).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['RENEWABLESOURCES']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_hydropower).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['HYDROPOWER']}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.btn_energy_nuclearpower).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['NUCLEARPOWER']}, 500, Phaser.Easing.Circular.In, true);
 
         //this.menu_bg
         game.add.tween(this.menu_bg).to({x: RES_X - 159}, 500, Phaser.Easing.Circular.In, true);
@@ -432,27 +441,30 @@ var statlasState = {
 
         // TESTING
         game.add.tween(this.menu_outer_bg.scale).to({ x: 1.0}, 400, Phaser.Easing.Quadratic.Out, true);
-
         game.add.tween(this.btn_demographics).to({x: RES_X - 81, y: BTN_MENU_Y['DEMOGRAPHICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_demographics.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_economics).to({x: RES_X - 81, y: BTN_MENU_Y['ECONOMICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_economics.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_education).to({x: RES_X - 81, y: BTN_MENU_Y['EDUCATION']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_education.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_health).to({x: RES_X - 81, y: BTN_MENU_Y['HEALTH']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_health.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_environment).to({x: RES_X - 81, y: BTN_MENU_Y['ENVIRONMENT']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_environment.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_energy).to({x: RES_X - 81, y: BTN_MENU_Y['ENERGY']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_energy.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
-
         game.add.tween(this.btn_military).to({x: RES_X - 81, y: BTN_MENU_Y['MILITARY']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_military.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
+
+        // buttons energy
+        game.add.tween(this.btn_energy_electricityproduction).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_accesstoelectricity).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_oil).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['OIL']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_coal).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['COAL']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_naturalgas).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['NATURALGAS']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_renewablesources).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['RENEWABLESOURCES']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_hydropower).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['HYDROPOWER']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_nuclearpower).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['NUCLEARPOWER']}, 500, Phaser.Easing.Circular.Out, true);
 
         //this.menu_bg
         game.add.tween(this.menu_bg).to({x: RES_X}, 500, Phaser.Easing.Circular.Out, true);

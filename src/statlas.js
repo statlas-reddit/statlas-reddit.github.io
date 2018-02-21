@@ -71,7 +71,9 @@ var statlasState = {
         //console.log(BTN_MENU_Y)
         //this.btn_demographics_text = this.createMenuButtonText('btn_demographics_text', BTN_MENU_X, BTN_MENU_Y['DEMOGRAPHICS'])
         this.btn_demographics = this.createMenuButton('btn_demographics', BTN_MENU_X, BTN_MENU_Y['DEMOGRAPHICS'])
-        //this.btn_demographics_text = game.add.sprite(BTN_MENU_X, BTN_MENU_Y['DEMOGRAPHICS'], 'btn_demographics_text')
+        this.btn_demographics_text = game.add.sprite(BTN_MENU_X, BTN_MENU_Y['DEMOGRAPHICS'], 'btn_demographics_text')
+        this.btn_demographics_text.anchor.x = 0.5;
+        this.btn_demographics_text.anchor.y = 0.5;
         this.btn_economics = this.createMenuButton('btn_economics', BTN_MENU_X, BTN_MENU_Y['ECONOMICS']);
         this.btn_education = this.createMenuButton('btn_education', BTN_MENU_X, BTN_MENU_Y['EDUCATION'])
         this.btn_health = this.createMenuButton('btn_health', BTN_MENU_X, BTN_MENU_Y['HEALTH'])

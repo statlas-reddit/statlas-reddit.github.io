@@ -20,6 +20,8 @@ var preloaderState = {
         game.load.image('menu_bridge2', 'assets/gui/backgrounds/menu_bridge2.png');
         game.load.image('menu_bridge3', 'assets/gui/backgrounds/menu_bridge3.png');
 
+        //game.load.image('menu_sep', 'assets/gui/backgrounds/menu_sep.png');
+
         // buttons
         game.load.image('btn_demographics', 'assets/gui/menu/btn_demographics.png');
         game.load.image('btn_demographics_text', 'assets/gui/menu/btn_demographics_text.png');

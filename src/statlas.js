@@ -21,9 +21,13 @@ var statlasState = {
         this.bridge(COLOR['MENU_NONACTIVE_BG'], COLOR['MENU_ACTIVE'])
 
         // MENU BACKGROUND
-        this.menu_bg = game.add.sprite(RES_X, 0, 'menu_bg');
+        this.menu_bg = game.add.sprite(RES_X + 61, 0, 'menu_bg');
         this.menu_bg.tint = convertColor(COLOR['MENU_NONACTIVE_BG'])
-        //this.menu_bg.anchor.x = 1.0
+        this.menu_bg.anchor.x = 0.5
+
+        //this.menu_sep = game.add.sprite(RES_X, (BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY'] + BTN_MENU_ENERGY_Y['OIL'])/2, 'menu_sep')
+        //this.menu_sep.anchor.x = 0.5
+        //this.menu_sep.anchor.y = 0.5
 
         // BUTTONS ENERGY
         this.btn_energy_electricityproduction = this.createMenuButton('btn_energy_electricityproduction', RES_X + 28+200, BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION'])
@@ -50,11 +54,9 @@ var statlasState = {
         game.add.tween(this.menu_constant).to({x: RES_X - 54}, 1, Phaser.Easing.Quintic.Out, true); // ??? 1
 
 
-
-
         // MENU FAKER
-        this.menu_faker = game.add.sprite(RES_X, 0, 'menu_faker');
-        game.add.tween(this.menu_faker).to({x: RES_X - 16}, 500, Phaser.Easing.Quintic.Out, true); // ??? 1
+        //this.menu_faker = game.add.sprite(RES_X, 0, 'menu_faker');
+        //game.add.tween(this.menu_faker).to({x: RES_X - 16-50+20}, 500, Phaser.Easing.Quintic.Out, true); // ??? 1
 
         // BUTTONS
         //let btn_demographics = game.add.sprite(RES_X - 98, 5, 'btn_demographics');
@@ -74,6 +76,8 @@ var statlasState = {
         this.btn_demographics_text = game.add.sprite(BTN_MENU_X, BTN_MENU_Y['DEMOGRAPHICS'], 'btn_demographics_text')
         this.btn_demographics_text.anchor.x = 0.5;
         this.btn_demographics_text.anchor.y = 0.5;
+        this.btn_demographics_text.alpha = 0.0;
+
         this.btn_economics = this.createMenuButton('btn_economics', BTN_MENU_X, BTN_MENU_Y['ECONOMICS']);
         this.btn_education = this.createMenuButton('btn_education', BTN_MENU_X, BTN_MENU_Y['EDUCATION'])
         this.btn_health = this.createMenuButton('btn_health', BTN_MENU_X, BTN_MENU_Y['HEALTH'])
@@ -328,11 +332,18 @@ var statlasState = {
         //tweenTint(obj, , convertColor(COLOR['WHITE']), 150)
         //this.bridge(COLOR['WHITE'], COLOR['WHITE']) // add later, last
 
+        //this.btn_demographics_text.alpha = 1.0
+        //console.log(obj['key'] + '_text')
+        tweenAlpha(eval('this.' + obj['key'] + '_text'), 1.0) // horse shit wrapped in moose shit
+
     },
 
     buttonOut: function(obj) {
         tweenTint(obj, obj.tint, convertColor(COLOR['MENU_NONACTIVE']), 150);
         //this.bridge(COLOR['WHITE'], COLOR['MENU_NONACTIVE']) // add later, last
+
+
+        tweenAlpha(eval('this.' + obj['key'] + '_text'), 0.0)
     },
 
     // gradient and country color change
@@ -383,8 +394,12 @@ var statlasState = {
         //game.add.tween(this.menu_outer_bg).to({x: RES_X}, 500, Phaser.Easing.Quintic.Out, true);
         // TWEEN X SCALE
         game.add.tween(this.menu_outer_bg.scale).to({ x: 0.0}, 400, Phaser.Easing.Quadratic.Out, true);
+
         game.add.tween(this.btn_demographics).to({x: RES_X - 29, y: BTN_MENU_Y['DEMOGRAPHICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_demographics.scale).to({ x: 0.35, y: 0.35}, 400, Phaser.Easing.Quadratic.Out, true)
+        game.add.tween(this.btn_demographics_text).to({x: RES_X - 29, y: BTN_MENU_Y['DEMOGRAPHICS']}, 400, Phaser.Easing.Quadratic.Out, true);
+        game.add.tween(this.btn_demographics_text.scale).to({ x: 0.35, y: 0.35}, 400, Phaser.Easing.Quadratic.Out, true)
+
         game.add.tween(this.btn_economics).to({x: RES_X - 29, y: BTN_MENU_Y['ECONOMICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_economics.scale).to({ x: 0.35, y: 0.35}, 400, Phaser.Easing.Quadratic.Out, true)
         game.add.tween(this.btn_education).to({x: RES_X - 29, y: BTN_MENU_Y['EDUCATION']}, 400, Phaser.Easing.Quadratic.Out, true);
@@ -410,7 +425,13 @@ var statlasState = {
         game.add.tween(this.btn_energy_nuclearpower).to({x: BTN_MENU_ENERGY_X, y: BTN_MENU_ENERGY_Y['NUCLEARPOWER']}, 500, Phaser.Easing.Circular.In, true);
 
         //this.menu_bg
-        game.add.tween(this.menu_bg).to({x: RES_X - 159}, 500, Phaser.Easing.Circular.In, true);
+        game.add.tween(this.menu_bg).to({x: RES_X - 98}, 500, Phaser.Easing.Circular.In, true);
+
+        //game.add.tween(this.menu_sep).to({x: RES_X - 98}, 500, Phaser.Easing.Circular.In, true);
+
+
+        // text, also fade icon when this is fired. also make it unclickable
+        tweenAlpha(eval('this.' + obj['key'] + '_text'), 0.0)
 
     },
 
@@ -443,8 +464,12 @@ var statlasState = {
 
         // TESTING
         game.add.tween(this.menu_outer_bg.scale).to({ x: 1.0}, 400, Phaser.Easing.Quadratic.Out, true);
+
         game.add.tween(this.btn_demographics).to({x: RES_X - 81, y: BTN_MENU_Y['DEMOGRAPHICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_demographics.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
+        game.add.tween(this.btn_demographics_text).to({x: RES_X - 81, y: BTN_MENU_Y['DEMOGRAPHICS']}, 400, Phaser.Easing.Quadratic.Out, true);
+        game.add.tween(this.btn_demographics_text.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
+
         game.add.tween(this.btn_economics).to({x: RES_X - 81, y: BTN_MENU_Y['ECONOMICS']}, 400, Phaser.Easing.Quadratic.Out, true);
         game.add.tween(this.btn_economics.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
         game.add.tween(this.btn_education).to({x: RES_X - 81, y: BTN_MENU_Y['EDUCATION']}, 400, Phaser.Easing.Quadratic.Out, true);
@@ -459,17 +484,19 @@ var statlasState = {
         game.add.tween(this.btn_military.scale).to({ x: 1.0, y: 1.0}, 400, Phaser.Easing.Quadratic.Out, true)
 
         // buttons energy
-        game.add.tween(this.btn_energy_electricityproduction).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_accesstoelectricity).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_oil).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['OIL']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_coal).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['COAL']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_naturalgas).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['NATURALGAS']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_renewablesources).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['RENEWABLESOURCES']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_hydropower).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['HYDROPOWER']}, 500, Phaser.Easing.Circular.Out, true);
-        game.add.tween(this.btn_energy_nuclearpower).to({x: RES_X + 28, y: BTN_MENU_ENERGY_Y['NUCLEARPOWER']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_electricityproduction).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['ELECTRICITYPRODUCTION']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_accesstoelectricity).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['ACCESSTOELECTRICITY']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_oil).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['OIL']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_coal).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['COAL']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_naturalgas).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['NATURALGAS']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_renewablesources).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['RENEWABLESOURCES']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_hydropower).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['HYDROPOWER']}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.btn_energy_nuclearpower).to({x: RES_X + 28 + 61, y: BTN_MENU_ENERGY_Y['NUCLEARPOWER']}, 500, Phaser.Easing.Circular.Out, true);
 
         //this.menu_bg
-        game.add.tween(this.menu_bg).to({x: RES_X}, 500, Phaser.Easing.Circular.Out, true);
+        game.add.tween(this.menu_bg).to({x: RES_X + 61}, 500, Phaser.Easing.Circular.Out, true);
+
+        //game.add.tween(this.menu_sep).to({x: RES_X}, 500, Phaser.Easing.Circular.Out, true);
     },
 
     bridge: function(col1, col2) {

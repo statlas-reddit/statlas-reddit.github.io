@@ -78,13 +78,13 @@ const COLOR = {
 };
 
 // font styles
-const STYLE_NUM_L =  {font: '31px Roboto Medium', fill: COLOR['WHITE'], boundsAlignH: 'right', boundsAlignV: 'top'};
-const STYLE_UNIT_L = {font: '31px Roboto Medium', fill: COLOR['UNIT'],  boundsAlignH: 'right', boundsAlignV: 'top'};
-const STYLE_NUM_R =  {font: '31px Roboto Medium', fill: COLOR['WHITE'], boundsAlignH: 'left',  boundsAlignV: 'top'};
-const STYLE_UNIT_R = {font: '31px Roboto Medium', fill: COLOR['UNIT'],  boundsAlignH: 'left',  boundsAlignV: 'top'};
-const GRADIENT_STEP_STYLE = {font: '15px Roboto Light', fill: COLOR['WHITE'], boundsAlignH: 'center', boundsAlignV: 'middle'};
-const CARD_STYLE_VALUE = {font: '18px Roboto Medium', fill: COLOR['BLACK'], align: 'center', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 101};
-const CARD_STYLE_UNIT = {font: '18px Roboto Medium', fill: COLOR['GRAY'], align: 'center', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 101};
+const STYLE_NUM_L =  {font: '31px Roboto-Medium', fill: COLOR['WHITE'], boundsAlignH: 'right', boundsAlignV: 'top'};
+const STYLE_UNIT_L = {font: '31px Roboto-Medium', fill: COLOR['UNIT'],  boundsAlignH: 'right', boundsAlignV: 'top'};
+const STYLE_NUM_R =  {font: '31px Roboto-Medium', fill: COLOR['WHITE'], boundsAlignH: 'left',  boundsAlignV: 'top'};
+const STYLE_UNIT_R = {font: '31px Roboto-Medium', fill: COLOR['UNIT'],  boundsAlignH: 'left',  boundsAlignV: 'top'};
+const GRADIENT_STEP_STYLE = {font: '15px Roboto-Light', fill: COLOR['WHITE'], boundsAlignH: 'center', boundsAlignV: 'middle'};
+const CARD_STYLE_VALUE = {font: '18px Roboto-Medium', fill: COLOR['BLACK'], align: 'center', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 101};
+const CARD_STYLE_UNIT = {font: '18px Roboto-Medium', fill: COLOR['GRAY'], align: 'center', boundsAlignH: 'left', boundsAlignV: 'top', wordWrap: true, wordWrapWidth: 101};
 //const CARD_STYLE_COUNTRY = {font: font_size + 'px Roboto Regular', fill: COLOR['BLACK'], align: 'center', boundsAlignH: 'center', boundsAlignV: 'middle', wordWrap: true, wordWrapWidth: this.current_flag.width};
 
 
